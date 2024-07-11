@@ -12,12 +12,20 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
 
-    <!-- Latest compiled and minified JavaScript -->
+    <!-- JQuery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <script src="{% static 'js/custom.js' %}"></script>
     <style>
       .form-group {
         padding: 15px !important;
+      }
+      .home-info {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
       }
     </style>
   </head>
@@ -25,17 +33,31 @@
     <nav class="navbar bg-body-tertiary">
       <div class="container">
         <a class="navbar-brand" href="{% url 'home' %}">Django Automation</a>
+        {% if user.is_authenticated %}
+        <!-- show logout button -->
         <div>
-          <a href="" class="float-right text-decoration-none text-dark"
+          Logged in as: <b>{{ user }}</b> &nbsp;<a
+            href="{% url 'logout' %}"
+            class="float-right btn btn-outline"
+            style="border-color: #ea3b18"
+            >Logout</a
+          >
+        </div>
+        {% else %}
+        <div>
+          <a
+            href="{% url 'login' %}"
+            class="float-right text-decoration-none text-dark"
             >Login</a
           >
           <a
-            href=""
+            href="{% url 'register' %}"
             class="float-right btn btn-primary"
             style="background-color: #5c7f74; border: none"
             >Register</a
           >
         </div>
+        {% endif %}
       </div>
     </nav>
     {% block content %}

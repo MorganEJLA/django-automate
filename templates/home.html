@@ -1,13 +1,18 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<div class="container" style="padding: 50px;">
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="padding: 50px">
+  {% if user.is_authenticated %}
   <h2 class="text-center">What I can Automate with Django</h2>
   <div class="row pt-5">
     <!-- Import data -->
     <div class="col-md-4 d-flex align-items-stretch">
-      <a href="{% url 'import_data' %}" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #5C7F74; color: white;">
+      <a
+        href="{% url 'import_data' %}"
+        class="text-decoration-none text-dark w-100"
+      >
+        <div
+          class="card shadow h-100"
+          style="background-color: #5c7f74; color: white"
+        >
           <div class="card-header">
             <h4>Import Data</h4>
           </div>
@@ -19,13 +24,21 @@
     </div>
     <!-- Export Data -->
     <div class="col-md-4 d-flex align-items-stretch">
-      <a href="{% url 'export_data' %}" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #B7D1BF; color: black;">
+      <a
+        href="{% url 'export_data' %}"
+        class="text-decoration-none text-dark w-100"
+      >
+        <div
+          class="card shadow h-100"
+          style="background-color: #b7d1bf; color: black"
+        >
           <div class="card-header">
             <h4>Export Data</h4>
           </div>
           <div class="card-body">
-            <p class="card-text">Exports data from a specific table to a CSV file.</p>
+            <p class="card-text">
+              Exports data from a specific table to a CSV file.
+            </p>
           </div>
         </div>
       </a>
@@ -33,7 +46,10 @@
     <!-- Bulk Emails -->
     <div class="col-md-4 d-flex align-items-stretch">
       <a href="#" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #F87E65; color: white;">
+        <div
+          class="card shadow h-100"
+          style="background-color: #f87e65; color: white"
+        >
           <div class="card-header">
             <h4>Bulk Emails</h4>
           </div>
@@ -49,7 +65,10 @@
     <!-- Email Tracking -->
     <div class="col-md-4 d-flex align-items-stretch">
       <a href="#" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #F6C3B1; color: black;">
+        <div
+          class="card shadow h-100"
+          style="background-color: #f6c3b1; color: black"
+        >
           <div class="card-header">
             <h4>Email Tracking</h4>
           </div>
@@ -62,7 +81,10 @@
     <!-- Compress Images -->
     <div class="col-md-4 d-flex align-items-stretch">
       <a href="#" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #5C7F74; color: white;">
+        <div
+          class="card shadow h-100"
+          style="background-color: #5c7f74; color: white"
+        >
           <div class="card-header">
             <h4>Compress Images</h4>
           </div>
@@ -75,7 +97,10 @@
     <!-- Web Scraping -->
     <div class="col-md-4 d-flex align-items-stretch">
       <a href="#" class="text-decoration-none text-dark w-100">
-        <div class="card shadow h-100" style="background-color: #F6C3B1; color: black;">
+        <div
+          class="card shadow h-100"
+          style="background-color: #f6c3b1; color: black"
+        >
           <div class="card-header">
             <h4>Web Scraping</h4>
           </div>
@@ -86,5 +111,30 @@
       </a>
     </div>
   </div>
+  {% else %}
+  <div class="home-info">
+    <h2 class="text-center">What can We Automate with Django?</h2>
+    <p class="lead text-center text-muted">
+      Various tools I made using the Django Framework. From automating routine
+      tasks ranging from data processing to scheduling, etc. leveraging Django's
+      capabilities used to be streamline workflows, saving time and enhancing
+      productivity.
+    </p>
+    <div style="display: flex; justify-content: center">
+      <a
+        href="{% url 'login' %}"
+        class="btn btn-primary"
+        style="background-color: #a7e1ce; border-color: #5c7f74"
+        >LOGIN</a
+      >
+      &nbsp;<a
+        href="{% url 'register' %}"
+        class="btn btn-primary"
+        style="background-color: #5c7f74; border-color: #5c7f74"
+        >REGISTER</a
+      >
+    </div>
+  </div>
+  {% endif %}
 </div>
 {% endblock %}
