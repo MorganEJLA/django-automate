@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
 <div class="container" style="padding: 50px">
   {% if user.is_authenticated %}
   <h2 class="text-center">What I can Automate with Django</h2>
@@ -45,7 +47,10 @@
     </div>
     <!-- Bulk Emails -->
     <div class="col-md-4 d-flex align-items-stretch">
-      <a href="#" class="text-decoration-none text-dark w-100">
+      <a
+        href="{% url 'send_email' %}"
+        class="text-decoration-none text-dark w-100"
+      >
         <div
           class="card shadow h-100"
           style="background-color: #f87e65; color: white"
