@@ -16,9 +16,11 @@
       {% for email in emails %}
       <tr>
         <th scope="row">{{ forloop.counter }}</th>
-        <td>{{ email.subject }}</td>
+        <td>
+          <a href="{% url 'track_stats' email.id %}">{{ email.subject }}</a>
+        </td>
         <td>{{ email.email_list }}</td>
-        <td>0</td>
+        <td>{{ email.total_sent }}</td>
         <td>
           <div>0% Opened</div>
           <div>0% Clicked</div>
