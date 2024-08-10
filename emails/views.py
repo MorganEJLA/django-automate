@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.http import HttpResponse
 from .tasks import send_email_task
 from .forms import EmailForm
 from django.contrib import messages
 from dataentry.utils import send_email_notification
 from django.conf import settings
-from .models import Subscriber, Email, Sent
+from .models import Subscriber, Email, Sent, EmailTracking
 from django.db.models import Sum
+from django.utils import timezone
 # Create your views here.
 def send_email(request):
     if request.method == 'POST':
@@ -43,13 +44,25 @@ def send_email(request):
         }
         return render(request, 'emails/send_email.html', context)
 
-def track_click(request):
+def track_click(request, unique_id):
+    print(request)
     #Logic to store the tracking info
     return
 
-def track_open(request):
+def track_open(request, unique_id):
     #Logic to store opening info
-    return
+    try:
+        email_tracking = EmailTracking.objects.get(unique_id=unique_id)
+        #Check if the opened_at field is already set or not
+        if not email_tracking.opened_at:
+            email_tracking.opened_at = timezone.now()
+            email_tracking.save()
+            return HttpResponse("Email opened successfully")
+        else:
+            print("email already opened")
+            return HttpResponse("Email already opened")
+    except:
+        return HttpResponse("Email tracking record not found")
 
 def track_dashboard(request):
     emails = Email.objects.all().annotate(total_sent=Sum('sent__total_sent'))

@@ -68,7 +68,7 @@
 
   <div class="row pt-5">
     <!-- Email Tracking -->
-    <div class="col-md-4 d-flex align-items-stretch">
+    {% comment %} <div class="col-md-4 d-flex align-items-stretch">
       <a href="{% url 'track_dashboard' %}" class="text-decoration-none text-dark w-100">
         <div
           class="card shadow h-100"
@@ -82,10 +82,10 @@
           </div>
         </div>
       </a>
-    </div>
+    </div> {% endcomment %}
     <!-- Compress Images -->
     <div class="col-md-4 d-flex align-items-stretch">
-      <a href="#" class="text-decoration-none text-dark w-100">
+      <a href="{% url 'compress' %}" class="text-decoration-none text-dark w-100">
         <div
           class="card shadow h-100"
           style="background-color: #5c7f74; color: white"
@@ -104,7 +104,7 @@
       <a href="#" class="text-decoration-none text-dark w-100">
         <div
           class="card shadow h-100"
-          style="background-color: #f6c3b1; color: black"
+          style="background-color: #b7d1bf; color: black"
         >
           <div class="card-header">
             <h4>Web Scraping</h4>
@@ -115,7 +115,65 @@
         </div>
       </a>
     </div>
+    <!-- Web Scraping -->
+
+
   </div>
+  <div class="row pt-5">
+    <!-- Tarot a Day Email -->
+    <div class="col-md-4 d-flex align-items-stretch">
+      <a href="{% url 'track_dashboard' %}" class="text-decoration-none text-dark w-100">
+        <div
+          class="card shadow h-100"
+          style="background-color: #f87e65; color: white"
+        >
+          <div class="card-header">
+            <h4>Tarot Card A Day</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Sends a different Tarot Card via Email everyday </p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- Diff Analyzer | Google Sheets -->
+    <div class="col-md-4 d-flex align-items-stretch">
+      <a href="#" class="text-decoration-none text-dark w-100">
+        <div
+          class="card shadow h-100"
+          style="background-color: #f6c3b1; color: black"
+        >
+          <div class="card-header">
+            <h4>Diff Analyzer | Google Sheets</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Compares Large Datasets to Check for Errors &amp; Differences</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- Automating ChatGPT -->
+    <div class="col-md-4 d-flex align-items-stretch">
+      <a href="#" class="text-decoration-none text-dark w-100">
+        <div
+          class="card shadow h-100"
+          style="background-color: #5c7f74; color: white"
+        >
+          <div class="card-header">
+            <h4>Automating ChatGPT</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">Creating a Personalized ChatBot in OpenAI and ChatGPT</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <!-- Web Scraping -->
+
+
+  </div>
+
+
   {% else %}
   <div class="home-info">
     <h2 class="text-center">What can We Automate with Django?</h2>

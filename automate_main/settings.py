@@ -25,7 +25,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', cast=bool) #True or False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     "crispy_bootstrap5",
     "emails",
     "ckeditor",
-    
+    "image_compression",
+
 ]
 
 MIDDLEWARE = [
@@ -165,3 +166,6 @@ CKEDITOR_CONFIGS = {
 
     },
 }
+
+CSRF_TRUSTED_ORIGINS = ['https://ample-bunny-unduly.ngrok-free.app']
+BASE_URL = 'https://ample-bunny-unduly.ngrok-free.app'
